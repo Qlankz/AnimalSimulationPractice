@@ -48,9 +48,21 @@ function playGame() {
       rl.close()
       return
     }
-    if (command === 'nextday') {
+    if (command === 'next') {
       advanceDay()
     }
+    if (command === 'clear') {
+      if (animals.length > 0) {
+        for (const animal of animals) {
+          animal.alive = false
+        }
+        animals.splice(0)
+        console.log('All animals have been removed')
+      } else {
+        console.log('There are no animals to clear')
+      }
+    }
+
     playGame()
   })
 }
