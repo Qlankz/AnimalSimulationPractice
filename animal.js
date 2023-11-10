@@ -22,32 +22,28 @@ class Animal {
     let thirst = Math.floor(Math.random() * 100)
     let energy = Math.floor(Math.random() * 100)
 
-    hunger = Math.max(50, hunger)
-    thirst = Math.max(50, thirst)
-    energy = Math.max(50, energy)
-
     console.log(`A new ${name} was born onto the lands`)
     return new Animal(name, hunger, thirst, energy, true)
   }
 
   eat() {
-    if (this.hunger >= 100) {
+    if (this.hunger > 100) {
       this.hunger = 100
-    } else if (this.hunger <= 0) {
+    } else if (this.hunger < 0) {
       this.hunger = 0
       this.alive = false
       console.log(`A ${this.name} has died from hunger`)
     } else {
       console.log(`The ${this.name} is eating`)
       this.hunger += 15
-      this.energy += 10
+      this.energy += 18
     }
   }
 
   drink() {
-    if (this.thirst >= 100) {
+    if (this.thirst > 100) {
       this.thirst = 100
-    } else if (this.thirst <= 0) {
+    } else if (this.thirst < 0) {
       this.thirst = 0
       this.alive = false
       console.log(`A ${this.name} has died from thirst`)
@@ -59,9 +55,9 @@ class Animal {
   }
 
   sleep() {
-    if (this.energy >= 100) {
+    if (this.energy > 100) {
       this.energy = 100
-    } else if (this.energy <= 0) {
+    } else if (this.energy < 0) {
       this.energy = 10
       console.log(`The ${this.name} has passed out from exhaustion`)
     } else {
@@ -69,10 +65,12 @@ class Animal {
     }
   }
 
-  roaming() {
+  roam() {
     if (this.alive == true) {
       console.log(`The ${this.name} is roaming the lands`)
       this.energy -= 10
+      this.thirst -= 15
+      this.hunger -= 20
     }
   }
 }

@@ -19,6 +19,20 @@ function addAnimal() {
   }
 }
 
+function advanceDay() {
+  let days = 1
+  for (const animal of animals) {
+    animal.eat()
+    animal.drink()
+    animal.roam()
+    animal.sleep()
+    console.log(
+      `${animal.name}: Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}`
+    )
+  }
+  days++
+}
+
 function playGame() {
   if (!simStarted) {
     simStarted = true
@@ -32,7 +46,9 @@ function playGame() {
       rl.close()
       return
     }
-
+    if (command === 'nextday') {
+      advanceDay()
+    }
     playGame()
   })
 }
