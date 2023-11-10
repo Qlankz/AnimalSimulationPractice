@@ -21,7 +21,7 @@ const animals = []
 
 function addAnimal() {
   if (animals.length < 20) {
-    const randomAnimal = Animal.newRandomAnimal()
+    const randomAnimal = Events.spawnAnimal()
     animals.push(randomAnimal)
     console.log(randomAnimal)
   } else {
@@ -38,7 +38,7 @@ function advanceDay() {
       Events.roam(animal)
       Events.ageUp(animal)
       console.log(
-        `${animal.name}: Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}, Age - ${animal.age}`
+        `${animal.name}: Speed - ${animal.speed}, Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}, Age - ${animal.age}`
       )
     }
   }

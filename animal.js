@@ -8,29 +8,30 @@ class Animal {
     this.alive = alive
   }
 
-  static newRandomAnimal() {
-    const animalNames = [
-      'Lion',
-      'Elephant',
-      'Giraffe',
-      'Bunny',
-      'Tiger',
-      'Bear',
-    ]
-
-    let name = animalNames[Math.floor(Math.random() * animalNames.length)]
-    let hunger = Math.floor(Math.random() * 100)
-    let thirst = Math.floor(Math.random() * 100)
-    let energy = Math.floor(Math.random() * 100)
-    let age = 0
-
-    console.log(`A new ${name} was born onto the lands`)
-    return new Animal(name, hunger, thirst, energy, age, true)
-  }
-
   constrainValue(value, min, max) {
     return Math.min(Math.max(value, min), max)
   }
 }
 
-module.exports = Animal
+class Wolf extends Animal {
+  constructor(name, speed, hunger, thirst, energy, age, alive) {
+    super(name, hunger, thirst, energy, age, alive)
+    this.speed = speed
+  }
+}
+
+class Bunny extends Animal {
+  constructor(name, speed, hunger, thirst, energy, age, alive) {
+    super(name, hunger, thirst, energy, age, alive)
+    this.speed = speed
+  }
+}
+
+class Deer extends Animal {
+  constructor(name, speed, hunger, thirst, energy, age, alive) {
+    super(name, hunger, thirst, energy, age, alive)
+    this.speed = speed
+  }
+}
+
+module.exports = { Animal, Wolf, Bunny, Deer }

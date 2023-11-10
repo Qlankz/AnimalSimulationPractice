@@ -1,3 +1,5 @@
+const { Wolf, Bunny, Deer } = require('./animal')
+const Animal = require('./animal')
 function roam(Animal) {
   if (Animal.alive) {
     if (Animal.age > 9) {
@@ -64,6 +66,30 @@ function ageUp(Animal) {
   }
 }
 
+function spawnAnimal() {
+  const animalTypes = ['Wolf', 'Bunny', 'Deer']
+  const randomIndex = Math.floor(Math.random() * animalTypes.length)
+  const randomType = animalTypes[randomIndex]
+
+  let animal
+
+  switch (randomType) {
+    case 'Wolf':
+      animal = new Wolf('Wolf', 30, 100, 100, 100, 0, true)
+      break
+    case 'Bunny':
+      animal = new Bunny('Bunny', 30, 100, 100, 100, 0, true)
+      break
+    case 'Deer':
+      animal = new Deer('Deer', 30, 100, 100, 100, 0, true)
+      break
+    default:
+      console.log('Unknown animal type')
+      return null
+  }
+  return animal
+}
+
 module.exports = {
   roam,
   breed,
@@ -71,4 +97,5 @@ module.exports = {
   drink,
   sleep,
   ageUp,
+  spawnAnimal,
 }
