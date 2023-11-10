@@ -7,9 +7,9 @@ class Animal {
     this.alive = alive
   }
 
-  static newAnimal(name, hunger, thirst, alive) {
-    console.log('A new animal was born')
-    return new Animal(name, hunger, thirst, alive)
+  static newAnimal(name, hunger, thirst, energy, alive) {
+    console.log(`A new ${name} was born into the lands`)
+    return new Animal(name, hunger, thirst, energy, alive)
   }
 
   eat() {
@@ -50,4 +50,16 @@ class Animal {
       this.energy += 30
     }
   }
+
+  roaming() {
+    if (this.alive == true) {
+      console.log(`The ${this.name} is roaming the lands`)
+      this.energy -= 10
+    }
+  }
 }
+
+const animals = [
+  Animal.newAnimal('Lion', 100, 100, 100, true),
+  Animal.newAnimal('Bunny', 100, 100, 100, true),
+]
