@@ -21,16 +21,18 @@ function addAnimal() {
 
 function advanceDay() {
   let days = 1
-  for (const animal of animals) {
-    animal.eat()
-    animal.drink()
-    animal.roam()
-    animal.sleep()
-    console.log(
-      `${animal.name}: Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}`
-    )
-  }
   days++
+  for (const animal of animals) {
+    if (animal.alive == true) {
+      animal.eat()
+      animal.drink()
+      animal.roam()
+      animal.sleep()
+      console.log(
+        `${animal.name}: Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}`
+      )
+    }
+  }
 }
 
 function playGame() {

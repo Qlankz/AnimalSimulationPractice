@@ -1,9 +1,9 @@
 class Animal {
   constructor(name, hunger, thirst, energy, alive) {
     this.name = name
-    this.hunger = hunger
-    this.thirst = thirst
-    this.energy = energy
+    this.hunger = this.constrainValue(hunger, 0, 100)
+    this.thirst = this.constrainValue(thirst, 0, 100)
+    this.energy = this.constrainValue(energy, 0, 100)
     this.alive = alive
   }
 
@@ -27,51 +27,59 @@ class Animal {
   }
 
   eat() {
-    if (this.hunger > 100) {
-      this.hunger = 100
-    } else if (this.hunger < 0) {
-      this.hunger = 0
-      this.alive = false
-      console.log(`A ${this.name} has died from hunger`)
-    } else {
-      console.log(`The ${this.name} is eating`)
-      this.hunger += 15
-      this.energy += 18
+    if (this.alive) {
+      if (this.hunger <= 0) {
+        this.hunger = 0
+        this.alive = false
+        console.log(`A ${this.name} has died from hunger`)
+      } else {
+        console.log(`The ${this.name} is eating`)
+        this.hunger += Math.floor(Math.random() * 15) - 5
+        this.energy += Math.floor(Math.random() * 12) - 5
+        this.hunger = this.constrainValue(this.hunger, 0, 100)
+        this.energy = this.constrainValue(this.energy, 0, 100)
+      }
     }
   }
 
   drink() {
-    if (this.thirst > 100) {
-      this.thirst = 100
-    } else if (this.thirst < 0) {
-      this.thirst = 0
-      this.alive = false
-      console.log(`A ${this.name} has died from thirst`)
-    } else {
-      console.log(`The ${this.name} is drinking`)
-      this.thirst += 25
-      this.energy += 5
+    if (this.alive) {
+      if (this.thirst <= 0) {
+        this.thirst = 0
+        this.alive = false
+        console.log(`A ${this.name} has died from thirst`)
+      } else {
+        console.log(`The ${this.name} is drinking`)
+        this.thirst += Math.floor(Math.random() * 12) - 5
+        this.energy += Math.floor(Math.random() * 11) - 5
+        this.thirst = this.constrainValue(this.thirst, 0, 100)
+        this.energy = this.constrainValue(this.energy, 0, 100)
+      }
     }
   }
 
   sleep() {
-    if (this.energy > 100) {
-      this.energy = 100
-    } else if (this.energy < 0) {
-      this.energy = 10
-      console.log(`The ${this.name} has passed out from exhaustion`)
-    } else {
-      this.energy += 30
+    if (this.alive) {
+      console.log(`The ${this.name} is sleeping`)
+      this.energy += Math.floor(Math.random() * 15) - 5
+      this.energy = this.constrainValue(this.energy, 0, 100)
     }
   }
 
   roam() {
-    if (this.alive == true) {
+    if (this.alive) {
       console.log(`The ${this.name} is roaming the lands`)
-      this.energy -= 10
-      this.thirst -= 15
-      this.hunger -= 20
+      this.energy -= 2
+      this.thirst -= 2
+      this.hunger -= 2
+      this.energy = this.constrainValue(this.energy, 0, 100)
+      this.thirst = this.constrainValue(this.thirst, 0, 100)
+      this.hunger = this.constrainValue(this.hunger, 0, 100)
     }
+  }
+
+  constrainValue(value, min, max) {
+    return Math.min(Math.max(value, min), max)
   }
 }
 
