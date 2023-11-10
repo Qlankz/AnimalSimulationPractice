@@ -7,9 +7,23 @@ class Animal {
     this.alive = alive
   }
 
-  static newAnimal(name, hunger, thirst, energy, alive) {
+  static newRandomAnimal() {
+    const animalNames = [
+      'Lion',
+      'Elephant',
+      'Giraffe',
+      'Bunny',
+      'Tiger',
+      'Bear',
+    ]
+
+    const name = animalNames[Math.floor(Math.random() * animalNames.length)]
+    const hunger = Math.floor(Math.random() * 100)
+    const thirst = Math.floor(Math.random() * 100)
+    const energy = Math.floor(Math.random() * 100)
+
     console.log(`A new ${name} was born into the lands`)
-    return new Animal(name, hunger, thirst, energy, alive)
+    return new Animal(name, hunger, thirst, energy, true)
   }
 
   eat() {
@@ -58,8 +72,3 @@ class Animal {
     }
   }
 }
-
-const animals = [
-  Animal.newAnimal('Lion', 100, 100, 100, true),
-  Animal.newAnimal('Bunny', 100, 100, 100, true),
-]
