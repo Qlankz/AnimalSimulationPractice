@@ -1,10 +1,13 @@
 const Animal = require('./animal')
 const readline = require('readline')
+
 let simStarted = false
+
 const commands = [
+  'help - Display available commands',
   'add - Adds an animal into the world',
   'next - Advances to the next day',
-  'quit - Stops the programs',
+  'quit - Stops the program',
   'clear - Clear all animals',
 ]
 
@@ -26,10 +29,8 @@ function addAnimal() {
 }
 
 function advanceDay() {
-  let days = 1
-  days++
   for (const animal of animals) {
-    if (animal.alive == true) {
+    if (animal.alive) {
       animal.eat()
       animal.drink()
       animal.roam()
@@ -70,6 +71,12 @@ function playGame() {
         console.log('All animals have been removed')
       } else {
         console.log('There are no animals to clear')
+      }
+    }
+    if (command === 'help') {
+      console.log('Available commands:')
+      for (const cmd of commands) {
+        console.log(`- ${cmd}`)
       }
     }
 
