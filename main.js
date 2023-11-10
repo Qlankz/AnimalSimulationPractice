@@ -1,5 +1,6 @@
 const Animal = require('./animal')
 const readline = require('readline')
+const Events = require('./events')
 
 let simStarted = false
 
@@ -31,11 +32,11 @@ function addAnimal() {
 function advanceDay() {
   for (const animal of animals) {
     if (animal.alive) {
-      animal.eat()
-      animal.drink()
-      animal.roam()
-      animal.sleep()
-      animal.ageUp()
+      Events.sleep(animal)
+      Events.drink(animal)
+      Events.eat(animal)
+      Events.roam(animal)
+      Events.ageUp(animal)
       console.log(
         `${animal.name}: Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}, Age - ${animal.age}`
       )

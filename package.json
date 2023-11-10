@@ -1,7 +1,7 @@
 {
   "name": "animalsimulationpractice",
   "version": "1.0.0",
-  "description": "This is merely a test I am doing which will be completed on a later date.",
+  "description": "Animal is merely a test I am doing which will be completed on a later date.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
