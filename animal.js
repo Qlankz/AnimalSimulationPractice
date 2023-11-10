@@ -26,7 +26,7 @@ class Animal {
     thirst = Math.max(50, thirst)
     energy = Math.max(50, energy)
 
-    console.log(`A new ${name} was born into the lands`)
+    console.log(`A new ${name} was born onto the lands`)
     return new Animal(name, hunger, thirst, energy, true)
   }
 
@@ -76,3 +76,5 @@ class Animal {
     }
   }
 }
+
+module.exports = Animal
