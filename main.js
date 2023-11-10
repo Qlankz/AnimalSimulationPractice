@@ -18,9 +18,13 @@ class Animal {
     ]
 
     const name = animalNames[Math.floor(Math.random() * animalNames.length)]
-    const hunger = Math.floor(Math.random() * 100)
-    const thirst = Math.floor(Math.random() * 100)
-    const energy = Math.floor(Math.random() * 100)
+    let hunger = Math.floor(Math.random() * 100)
+    let thirst = Math.floor(Math.random() * 100)
+    let energy = Math.floor(Math.random() * 100)
+
+    hunger = Math.max(50, hunger)
+    thirst = Math.max(50, thirst)
+    energy = Math.max(50, energy)
 
     console.log(`A new ${name} was born into the lands`)
     return new Animal(name, hunger, thirst, energy, true)
@@ -72,3 +76,5 @@ class Animal {
     }
   }
 }
+
+
