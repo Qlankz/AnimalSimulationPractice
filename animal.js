@@ -1,9 +1,10 @@
 class Animal {
-  constructor(name, hunger, thirst, energy, alive) {
+  constructor(name, hunger, thirst, energy, age, alive) {
     this.name = name
     this.hunger = this.constrainValue(hunger, 0, 100)
     this.thirst = this.constrainValue(thirst, 0, 100)
     this.energy = this.constrainValue(energy, 0, 100)
+    this.age = age
     this.alive = alive
   }
 
@@ -21,9 +22,10 @@ class Animal {
     let hunger = Math.floor(Math.random() * 100)
     let thirst = Math.floor(Math.random() * 100)
     let energy = Math.floor(Math.random() * 100)
+    let age = 0
 
     console.log(`A new ${name} was born onto the lands`)
-    return new Animal(name, hunger, thirst, energy, true)
+    return new Animal(name, hunger, thirst, energy, age, true)
   }
 
   eat() {
@@ -75,6 +77,16 @@ class Animal {
       this.energy = this.constrainValue(this.energy, 0, 100)
       this.thirst = this.constrainValue(this.thirst, 0, 100)
       this.hunger = this.constrainValue(this.hunger, 0, 100)
+    }
+  }
+
+  ageUp() {
+    if (this.alive) {
+      this.age += 1
+      if (this.age > 10) {
+        this.alive = false
+        console.log(`A ${this.name} has died of old age`)
+      }
     }
   }
 

@@ -35,8 +35,9 @@ function advanceDay() {
       animal.drink()
       animal.roam()
       animal.sleep()
+      animal.ageUp()
       console.log(
-        `${animal.name}: Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}`
+        `${animal.name}: Hunger - ${animal.hunger}, Thirst - ${animal.thirst}, Energy - ${animal.energy}, Age - ${animal.age}`
       )
     }
   }
