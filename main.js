@@ -1,6 +1,12 @@
 const Animal = require('./animal')
 const readline = require('readline')
 let simStarted = false
+const commands = [
+  'add - Adds an animal into the world',
+  'next - Advances to the next day',
+  'quit - Stops the programs',
+  'clear - Clear all animals',
+]
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -39,6 +45,10 @@ function playGame() {
   if (!simStarted) {
     simStarted = true
     console.log('Simulation Started!')
+    console.log('Available commands:')
+    for (const command of commands) {
+      console.log(`- ${command}`)
+    }
   }
   rl.question('Enter your command: ', (command) => {
     if (command === 'add') {
